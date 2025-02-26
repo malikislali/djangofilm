@@ -3,6 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+{% load static  %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -30,7 +31,8 @@
                
                <li>{{f.film_adi}}</li>
                <li>{{f.aciklama}}</li>
-               <li><img  src="{{f.foto}}"</img></li>
+             <li><img  src="{{f.foto}}"</li> 
+               <li><img  src="{%static 'img/'|add:f.foto%}"</li>
               
                {% endfor %} 
          </ul>

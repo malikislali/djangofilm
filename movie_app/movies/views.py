@@ -15,7 +15,7 @@ movies_list=[
     {
         "film_adi":"film 2",
         "aciklama":"film1 açıklama",
-        "foto":"",
+        "foto":"foto1.png",
         "anasayfa_durumu":True
     },
     {
