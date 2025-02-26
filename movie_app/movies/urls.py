@@ -13,7 +13,8 @@ from . import views
 
 urlpatterns = [
    # path('admin/', admin.site.urls),
-    path('', views.home),
-    path('home',views.home),
-    path('movies',views.movies)
+    path('', views.home, name=""),
+    path('home',views.home,name="Home"),
+    path('movies',views.movies,name="Movies"),
+    path('movies/<int:movie_id>',views.movies_detail,name="Movie_Detail"),
 ]

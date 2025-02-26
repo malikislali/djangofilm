@@ -1,50 +1,132 @@
+{% load static  %}
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>
-            SELAM
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Responsive Layout</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Optional: Add some padding and background colors for better visualization */
+    .container, .parent, .middle, .child, .side-div {
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+    .parent {
+      background-color: #f8f9fa;
+    }
+    .middle {
+      background-color: #e9ecef;
+    }
+    .child {
+      background-color: #dee2e6;
+    }
+    .side-div {
+      background-color: #ced4da;
+    }
+    img {
+      width: 100px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+     <!-- Navbar -->
+ 
+{% include "partials/navbar.html" %}
 
-        </h1>
-        <ul> 
-      <!--   <li>Macera</li>
-         <li>Romantik</li)
-        -->
-         {% for k in kategoriler  %}
-         <li>{{k}}</li>
-         {% endfor %} 
-         </ul>
+  <!-- Container Div -->
+  <div class="container">
+    <!-- Parent Div -->
+    <div class="parent">
+      Parent Div
+      <!-- Middle Div -->
+      <div class="middle row">
+        <!-- Two Side-by-Side Divs -->
+        <div class="side-div col-md-6">
+            <div class="list-group">
+                {% for k in kategoriler  %}
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    {{k}}
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                {% endfor %} 
+              </div>
 
-         <ul> 
-            <!--   <li>Macera</li>
-               <li>Romantik</li)
-              -->
+        </div>
+        <div class="side-div col-md-6">
+           
+          
+            {% for f in filmler  %}
+            {% if f.anasayfa_durumu%}
+            <div class="card">
+                <img class="card-img-top" src="holder.js/100x180/" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Title</h4>
+                    <p class="card-text">Text</p>
+                    
+                    <ul> 
+                      <!--   <li>Macera</li>
+                         <li>Romantik</li)
+                        -->
+          
+                        
+                         <li>{{f.film_adi}}</li>
+                         <li>{{f.aciklama}}</li>
+                         <li><img  src="{{f.foto}}"</img></li>
+                         <li><img  src="{%static 'img/'|add:f.foto%}"</li>
+                         <a href="{% url 'movies_details'f.movie_id %}" class="btn btn-primary">Go somewhere</a>
+                        
+                   </ul>
+                </div>
+            </div>
+            {%endif%}
+                         {% endfor %} 
+            
+           </div>
+            
+                <!--   <li>Macera</li>
+                   <li>Romantik</li)
+                  -->
+                  
+                   
+          
+        </div>
+      </div>
+      <!-- Child Div -->
+      <div class="child">
+        Child Div
+      </div>
+    </div>
+  </div>
 
-               {% for f in filmler  %}
-               {% if f.anasayfa_durumu%}
-               <li>{{f.film_adi}}</li>
-               <li>{{f.aciklama}}</li>
-               <li><img  src="{{f.foto}}"</img></li>
-              {%endif%}
-               {% endfor %} 
-         </ul>
-
-
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+  <!-- Bootstrap JS (Optional, if you need Bootstrap's JavaScript features) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
